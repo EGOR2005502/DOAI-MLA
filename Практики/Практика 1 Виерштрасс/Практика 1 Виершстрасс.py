@@ -1,6 +1,5 @@
 import numpy as np
 import matplotlib.pyplot as plt
-from matplotlib.widgets import RectangleSelector
 
 def weierstrass_function(x, a, b, n_terms):
     """
@@ -39,13 +38,5 @@ ax.set_xlabel('x')
 ax.set_ylabel('f(x)')
 ax.legend()
 ax.grid(True)
-
-def onselect(eclick, erelease):
-    """Callback для зумирования."""
-    x1, y1 = eclick.xdata, eclick.ydata
-    x2, y2 = erelease.xdata, erelease.ydata
-    ax.set_xlim(min(x1, x2), max(x1, x2))
-    ax.set_ylim(min(y1, y2), max(y1, y2))
-    fig.canvas.draw()
 
 plt.show()
