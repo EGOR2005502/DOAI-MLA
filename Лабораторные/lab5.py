@@ -1,0 +1,2 @@
+ar = [int(input(f"Введите элемент №{i+1}  ")) for i in range(int(input("Введите кол-во эллементов списка\n")))]
+print(f'{len([x for x in ar if x != max(ar)])} кол-во эллементов меньше чем {max(ar)}, также сумма чисел, которые больше 15 равна {sum(x for x in ar if x > 15)}')
