@@ -1,0 +1,1 @@
+print(f'----------------------------------\n{(usr_inp := input("Дай строку\n"))[:len(usr_inp)//2].replace("п", "*") + usr_inp[len(usr_inp)//2:]}')
