@@ -4,16 +4,18 @@ from functools import partial
 def fix_phone(phone_book):
     def normalize(phone):
         phone = re.sub(r'[\(\)\-\s]', '', phone)
-        if phone.startswith('8') and len(phone) == 11:
-            phone = '+7' + phone[1:]
-        elif len(phone) == 7:
-            phone = '+7495' + phone
-        return phone
+        return {
+            11: lambda: '+7' + phone[1:],
+            7: lambda: '+7495' + phone
+        }.get(len(phone), lambda: phone)()
 
     return list(map(normalize, phone_book))
 
 def check_number(num, phone):
-    return "YES" if num == phone else "NO"
+    return {
+        True: "YES",
+        False: "NO"
+    }[num == phone]
 
 # Чтение входных данных из файла input.txt
 with open('input.txt', 'r') as file:
